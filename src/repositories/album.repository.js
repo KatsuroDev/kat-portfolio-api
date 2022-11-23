@@ -7,3 +7,5 @@ class AlbumRepository {
         return retrieveQuery;
     }
 }
+
+export default new AlbumRepository();

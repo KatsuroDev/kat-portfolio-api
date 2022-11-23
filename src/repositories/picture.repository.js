@@ -7,3 +7,5 @@ class PictureRepository {
         return retrieveQuery;
     }
 }
+
+export default new PictureRepository();
