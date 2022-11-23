@@ -1,5 +1,5 @@
-import express from "express";
-import database from "./libs/database.js";
+import express from 'express';
+import database from './libs/database.js';
 import pictureRouter from './routes/picture.routes.js';
 import albumRouter from './routes/album.routes.js';
 
