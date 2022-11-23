@@ -1,4 +1,7 @@
 import express from "express";
+import database from "./libs/database.js";
+
+database();
 
 const app = express();
 
