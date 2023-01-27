@@ -6,6 +6,11 @@ class PictureRepository {
         const retrieveQuery = Picture.find();
         return retrieveQuery;
     }
+
+    create(picture)
+    {
+        return Picture.create(picture);
+    }
 }
 
 export default new PictureRepository();
