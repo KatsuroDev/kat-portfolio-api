@@ -25,7 +25,7 @@ class PictureRoutes {
             res.status(httpStatus.OK).json(pictures);
         } catch (err) {
             console.log(chalk.red('Error encountered\n' + err));
-            res.end();
+            res.status(httpStatus.NOT_FOUND).end();
             return;
         }
     }
