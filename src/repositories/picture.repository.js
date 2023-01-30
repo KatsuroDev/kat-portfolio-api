@@ -11,6 +11,11 @@ class PictureRepository {
     {
         return Picture.create(picture);
     }
+
+    delete(idPicture)
+    {
+        return Picture.findByIdAndDelete(idPicture);
+    }
 }
 
 export default new PictureRepository();
