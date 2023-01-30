@@ -2,7 +2,6 @@ import express from 'express';
 import HttpError from 'http-errors';
 import httpStatus from 'http-status';
 import chalk from 'chalk';
-import PictureRepository from '../repositories/picture.repository.js';
 import pictureRepository from '../repositories/picture.repository.js';
 
 const router = express.Router();
