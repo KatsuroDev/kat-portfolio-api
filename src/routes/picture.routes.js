@@ -15,7 +15,7 @@ class PictureRoutes {
 
     async getAll(req, res, next) {
         try {
-            let pictures = await PictureRepository.retrieveAll();
+            let pictures = await pictureRepository.retrieveAll();
 
             pictures = pictures.map(picture => {
                 picture = picture.toObject({getters:false, virtuals:false});
@@ -49,13 +49,15 @@ class PictureRoutes {
         
         try {
             const deleteResult = await pictureRepository.delete(idPicture);
-            if (!deleteRessult) {
+            if (!deleteResult) {
                 return next(HttpError.NotFound(`No picture was found with this id: ${req.params.idPicture}`));
             } 
             res.status(httpStatus.NO_CONTENT).end();
 
         } catch (err) {
-            return next(err);
+            console.log(chalk.red('Error encountered\n' + err));
+            res.status(httpStatus.BAD_REQUEST).end();
+            return;
         }
     }
 }
