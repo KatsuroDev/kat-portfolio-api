@@ -6,6 +6,11 @@ class AlbumRepository {
         const retrieveQuery = Album.find();
         return retrieveQuery;
     }
+
+    create(album)
+    {
+        return Album.create(album);
+    }
 }
 
 export default new AlbumRepository();

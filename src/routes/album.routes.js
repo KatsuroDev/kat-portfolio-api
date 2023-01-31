@@ -9,6 +9,7 @@ const router = express.Router();
 class AlbumRoutes {
     constructor() {
         router.get('/', this.getAll);
+        router.post('/', this.post);
     }
 
     async getAll(req, res, next) {
@@ -24,6 +25,20 @@ class AlbumRoutes {
         } catch (err) {
             console.log(chalk.red('Error encountered\n' + err));
             res.end();
+            return;
+        }
+    }
+
+    async post(req, res, next) {
+        const newAlbum = req.body;
+        try {
+            let albumAdded = await albumRepository.create(newAlbum);
+            albumAdded = albumAdded.toObject({getters:false,virtuals:false});
+
+            res.status(httpStatus.CREATED).json(albumAdded);
+        } catch(err) {
+            console.log(chalk.red('Error encountered\n' + err));
+            res.status(httpStatus.BAD_REQUEST).end();
             return;
         }
     }
