@@ -11,6 +11,11 @@ class AlbumRepository {
     {
         return Album.create(album);
     }
+
+    delete(idAlbum)
+    {
+        return Album.findByIdAndDelete(idAlbum);
+    }
 }
 
 export default new AlbumRepository();

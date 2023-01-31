@@ -10,6 +10,7 @@ class AlbumRoutes {
     constructor() {
         router.get('/', this.getAll);
         router.post('/', this.post);
+        router.delete('/:idAlbum', this.delete);
     }
 
     async getAll(req, res, next) {
@@ -37,6 +38,21 @@ class AlbumRoutes {
 
             res.status(httpStatus.CREATED).json(albumAdded);
         } catch(err) {
+            console.log(chalk.red('Error encountered\n' + err));
+            res.status(httpStatus.BAD_REQUEST).end();
+            return;
+        }
+    }
+
+    async delete(req, res, next) {
+        const idAlbum = req.params.idAlbum;
+        try {
+            const deleteResult = await albumRepository.delete(idAlbum);
+            if (!deleteResult) {
+                return next(HttpError.NotFound(`No picture was found with this id: ${idAlbum}`));
+            }
+            res.status(httpStatus.NO_CONTENT).end();
+        } catch (err) {
             console.log(chalk.red('Error encountered\n' + err));
             res.status(httpStatus.BAD_REQUEST).end();
             return;
