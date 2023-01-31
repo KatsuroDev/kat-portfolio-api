@@ -50,10 +50,9 @@ class PictureRoutes {
         try {
             const deleteResult = await pictureRepository.delete(idPicture);
             if (!deleteResult) {
-                return next(HttpError.NotFound(`No picture was found with this id: ${req.params.idPicture}`));
+                return next(HttpError.NotFound(`No picture was found with this id: ${idPicture}`));
             } 
             res.status(httpStatus.NO_CONTENT).end();
-
         } catch (err) {
             console.log(chalk.red('Error encountered\n' + err));
             res.status(httpStatus.BAD_REQUEST).end();
